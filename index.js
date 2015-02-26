@@ -35,8 +35,8 @@ var readline = require('readline'),
 
     rl.on('line', function (line) {
         curLine = line.split('\t');
-        if (curLine[cols.dsg] === 'PPLA' || curLine[cols.dsg] === 'PPLA2') {
-            console.log(curLine[cols.fn]);
+        if (curLine[cols.dsg] === 'PPLC' || curLine[cols.dsg] === 'PPLA2') {
+            //console.log(curLine[cols.fn]);
             lineCount++;
         }
     });
