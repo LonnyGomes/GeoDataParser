@@ -15,11 +15,16 @@ var readline = require('readline'),
         lat: 3, //latitude in decimal degrees
         lon: 4, //latitude in decimal degrees
         fc: 9,  //feature class
+        dsg:10, //feature designation code
         pc: 11, //populated place classification
         nt: 17, //name type (C,N,D,P, VA, V ...)
         sn: 21, //short name
         fn: 23  //full name with no diacritics
     },
+    dsgList = [
+        'PPLA',
+        'PPLA2'
+    ],
     curLine;
 
     var rl = readline.createInterface({
@@ -30,7 +35,7 @@ var readline = require('readline'),
 
     rl.on('line', function (line) {
         curLine = line.split('\t');
-        if (curLine[cols.nt] === 'N') {
+        if (curLine[cols.dsg] === 'PPLA' || curLine[cols.dsg] === 'PPLA2') {
             console.log(curLine[cols.fn]);
             lineCount++;
         }
