@@ -8,6 +8,8 @@ if (process.argv.length !== 3) {
 var readline = require('readline'),
     fs = require('fs'),
     inputPath = process.argv[2],
+    outputPath= 'dump.json',
+    outputStream = fs.createWriteStream(outputPath),
     lineCount = 0,
     //columns defined at following location:
     //http://earth-info.nga.mil/gns/html/gis_countryfiles.html
@@ -25,23 +27,44 @@ var readline = require('readline'),
         'PPLA',
         'PPLA2'
     ],
-    curLine;
+    isFirstEntry = true,
+    curLine,
+    curObj;
 
     var rl = readline.createInterface({
         input: fs.createReadStream(inputPath),
-        output: process.stdout,
+        output: outputStream,
         terminal: false
     });
+
+    outputStream.write("[");
 
     rl.on('line', function (line) {
         curLine = line.split('\t');
         if (curLine[cols.dsg] === 'PPLC' || curLine[cols.dsg] === 'PPLA2') {
-            //console.log(curLine[cols.fn]);
+            curObj = {
+                feature: curLine[cols.dsg],
+                type: curLine[cols.nt],
+                lat: Number(curLine[cols.lat]),
+                lon: Number(curLine[cols.lon]),
+                abbr: curLine[cols.sn],
+                name: curLine[cols.fn]
+            };
+
+            if (isFirstEntry) {
+                isFirstEntry = false;
+            } else {
+                outputStream.write(",\n");
+            }
+
+            outputStream.write(JSON.stringify(curObj));
             lineCount++;
         }
     });
 
     rl.on('close', function () {
-        console.log("total lines:" + lineCount);
+        console.log("Total lines:" + lineCount);
+        outputStream.write("]");
+        outputStream.end();
     });
 
