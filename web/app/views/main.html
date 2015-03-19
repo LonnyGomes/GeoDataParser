@@ -1,0 +1,7 @@
+
+<div class="row marketing">
+
+  <h2>City name search</h2>
+  <input type="text" ng-model="selected" typeahead="geoItem as geoItem.name for geoItem in geoData | filter: {name: $viewValue} | limitTo:8" placeholder="Enter city name to search" class="form-control">
+
+</div>
