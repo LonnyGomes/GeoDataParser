@@ -2,13 +2,16 @@
 <div class="row marketing">
 
   <h2>City name search</h2>
+
+  <div id="map" style="height: 440px; border: 1px solid #AAA;"></div>
+
   <input type="text" ng-model="selected" typeahead="geoItem as geoItem.name for geoItem in geoData | filter: {name: $viewValue} | limitTo:8" placeholder="Enter city name to search" class="form-control">
 
-<div ng-show="selected">
-  <ul>
-    <li>Latitude: {{selected.lat}}</li>
-    <li>Longitude: {{selected.lon}}</li>
-  </ul>
-</div>
+  <div ng-show="selected">
+    <ul>
+      <li>Latitude: {{selected.lat}}</li>
+      <li>Longitude: {{selected.lon}}</li>
+    </ul>
+  </div>
 
 </div>
