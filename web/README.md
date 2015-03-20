@@ -1,7 +1,7 @@
 # geonames-filter
 
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.11.1.
+version 0.11.1. The web frontend can be found [here](http://lonnygomes.github.io/GeoDataParser/web/dist/).
 
 ## Build & development
 
