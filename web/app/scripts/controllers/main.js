@@ -17,6 +17,11 @@ angular.module('geonamesFilterApp')
     });
 
     //TODO: make map compentent it's own directive
+
+    //we have to explicity set the images path when leaflet is concatted and minified
+    if (!L.Icon.Default.imagePath) {
+      L.Icon.Default.imagePath = "scripts/images";
+    }
     var map = L.map('map', {
       center: [20.0, 5.0],
       minZoom: 2,
