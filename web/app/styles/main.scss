@@ -52,6 +52,11 @@ body {
   font-size: 2.5em;
 }
 
+#map {
+  height: 500px;
+  border: 1px solid #AAA;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
@@ -72,5 +77,13 @@ body {
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;
+  }
+
+
+}
+
+@media screen and (max-width: 768px) {
+  #map {
+    height: 300px;
   }
 }
