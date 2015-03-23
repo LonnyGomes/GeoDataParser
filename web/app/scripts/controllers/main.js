@@ -25,8 +25,11 @@ angular.module('geonamesFilterApp')
     var map = L.map('map', {
       center: [20.0, 5.0],
       minZoom: 2,
-      zoom: 2
+      zoom: 2,
+      zoomControl: false
     });
+
+    new L.Control.Zoom({ position: 'topright' }).addTo(map);
 
     L.tileLayer('http://{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png', {
       subdomains: ['otile1', 'otile2', 'otile3', 'otile4']
